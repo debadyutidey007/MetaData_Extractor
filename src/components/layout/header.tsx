@@ -13,7 +13,7 @@ export function Header() {
       </div>
       <div className="flex items-center gap-2">
          <Button variant="ghost" size="icon" asChild>
-            <a href="https://github.com/firebase/studio-examples/tree/main/data-snatcher" target="_blank" rel="noopener noreferrer" aria-label="GitHub Repository">
+            <a href="https://github.com/debadyutidey007/MetaData_Extractor" target="_blank" rel="noopener noreferrer" aria-label="GitHub Repository">
                 <Github className="h-5 w-5" />
             </a>
          </Button>
