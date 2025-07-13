@@ -14,6 +14,7 @@ interface MetadataDisplayProps {
 }
 
 const renderValue = (value: any): string => {
+  if (value === null || value === undefined) return "N/A";
   if (value instanceof Array && value.every(v => typeof v === 'number')) {
       return value.join(', ');
   }
@@ -40,20 +41,20 @@ const groupMetadata = (data: Record<string, any> = {}) => {
   };
 
   const keywords = {
-    file: ['fileName', 'fileSize', 'fileType', 'lastModified', 'MIMEType', 'MajorBrand', 'PDFFormatVersion', 'IsLinearized'],
+    file: ['fileName', 'fileSize', 'fileType', 'lastModified', 'MIMEType', 'MajorBrand', 'PDFFormatVersion', 'IsLinearized', 'Title', 'Subject', 'Keywords'],
     image: ['ImageWidth', 'ImageHeight', 'PixelXDimension', 'PixelYDimension', 'XResolution', 'YResolution', 'ResolutionUnit', 'Orientation', 'ColorSpace'],
-    camera: ['Make', 'Model', 'Software', 'ExposureTime', 'FNumber', 'ISOSpeedRatings', 'ExposureBias', 'FocalLength', 'Flash', 'MeteringMode', 'WhiteBalance', 'DateTimeOriginal', 'CreateDate', 'ModifyDate'],
+    camera: ['Make', 'Model', 'Software', 'ExposureTime', 'FNumber', 'ISOSpeedRatings', 'ExposureBiasValue', 'FocalLength', 'Flash', 'MeteringMode', 'WhiteBalance', 'DateTimeOriginal', 'CreateDate', 'ModifyDate', 'Author', 'Creator', 'Producer'],
     gps: ['GPSLatitude', 'GPSLongitude', 'GPSAltitude', 'GPSTimeStamp', 'GPSDateStamp', 'GPSLatitudeRef', 'GPSLongitudeRef', 'GPSAltitudeRef'],
   };
 
   const otherData: Record<string, any> = {};
 
   for (const key in data) {
-    if (key === 'info') continue;
+    if (key === 'info' || data[key] === null || data[key] === undefined) continue;
 
     let assigned = false;
     for (const [groupName, groupKeywords] of Object.entries(keywords)) {
-        if (groupKeywords.some(k => key.toLowerCase().includes(k.toLowerCase()))) {
+        if (groupKeywords.some(k => key.toLowerCase() === k.toLowerCase())) {
             groups[groupName][key] = data[key];
             assigned = true;
             break;
@@ -65,18 +66,15 @@ const groupMetadata = (data: Record<string, any> = {}) => {
   }
 
   if (data.info && typeof data.info === 'string') {
-    otherData['info'] = data.info;
-  } else if (data.info) {
-    Object.assign(otherData, data.info);
+    otherData['Info'] = data.info;
   }
   
   if (Object.keys(otherData).length > 0) {
       groups.other = otherData;
   }
   
-  // Clean up empty groups, but always keep file and gps
   for (const groupName in groups) {
-    if (groupName !== 'file' && groupName !== 'gps' && Object.keys(groups[groupName]).length === 0) {
+    if (Object.keys(groups[groupName]).length === 0) {
       delete groups[groupName];
     }
   }
@@ -86,29 +84,22 @@ const groupMetadata = (data: Record<string, any> = {}) => {
 
 const getGpsCoords = (gpsData: Record<string, any>): { lat: number, lon: number } | null => {
     const { GPSLatitude, GPSLongitude, GPSLatitudeRef, GPSLongitudeRef } = gpsData;
-    if (!GPSLatitude || !GPSLongitude || !GPSLatitudeRef || !GPSLongitudeRef) return null;
+    if (!GPSLatitude || !GPSLongitude) return null;
 
-    const toDecimal = (gps: number[], ref: string) => {
-        let decimal = gps[0] + gps[1] / 60 + gps[2] / 3600;
-        if (ref === 'S' || ref === 'W') {
-            decimal = -decimal;
-        }
-        return decimal;
-    };
+    let lat = Array.isArray(GPSLatitude) ? GPSLatitude[0] + GPSLatitude[1] / 60 + GPSLatitude[2] / 3600 : parseFloat(GPSLatitude);
+    let lon = Array.isArray(GPSLongitude) ? GPSLongitude[0] + GPSLongitude[1] / 60 + GPSLongitude[2] / 3600 : parseFloat(GPSLongitude);
     
-    try {
-        const lat = toDecimal(GPSLatitude, GPSLatitudeRef);
-        const lon = toDecimal(GPSLongitude, GPSLongitudeRef);
-        return { lat, lon };
-    } catch (e) {
-        return null;
-    }
+    if (isNaN(lat) || isNaN(lon)) return null;
+
+    if (GPSLatitudeRef === 'S') lat = -lat;
+    if (GPSLongitudeRef === 'W') lon = -lon;
+    
+    return { lat, lon };
 }
 
 
 const GpsMap = ({ coords }: { coords: { lat: number, lon: number } }) => {
     const { lat, lon } = coords;
-    // Using OpenStreetMap embed
     const mapUrl = `https://www.openstreetmap.org/export/embed.html?bbox=${lon-0.01},${lat-0.01},${lon+0.01},${lat+0.01}&layer=mapnik&marker=${lat},${lon}`;
     
     return (
@@ -123,6 +114,7 @@ const GpsMap = ({ coords }: { coords: { lat: number, lon: number } }) => {
                 src={mapUrl}
                 title="GPS Location Map"
                 aria-label="GPS Location Map"
+                style={{filter: 'invert(90%) hue-rotate(180deg)'}}
             ></iframe>
         </div>
     );
@@ -139,11 +131,11 @@ const MetadataAccordion = ({ data }: { data: Record<string, any> | undefined }) 
   const hasGpsData = Object.keys(gpsData).length > 0;
   
   const groupIcons: Record<string, React.ReactNode> = {
-      file: <FileIcon className="mr-2 h-5 w-5 text-primary" />,
-      image: <ImageIcon className="mr-2 h-5 w-5 text-primary" />,
-      camera: <Camera className="mr-2 h-5 w-5 text-primary" />,
-      gps: <MapPin className="mr-2 h-5 w-5 text-primary" />,
-      other: <FileText className="mr-2 h-5 w-5 text-primary" />
+      file: <FileIcon className="mr-3 h-5 w-5 text-primary" />,
+      image: <ImageIcon className="mr-3 h-5 w-5 text-primary" />,
+      camera: <Camera className="mr-3 h-5 w-5 text-primary" />,
+      gps: <MapPin className="mr-3 h-5 w-5 text-primary" />,
+      other: <FileText className="mr-3 h-5 w-5 text-primary" />
   }
   
   const defaultOpen = Object.keys(groupedData).filter(g => g !== 'other');
@@ -156,7 +148,7 @@ const MetadataAccordion = ({ data }: { data: Record<string, any> | undefined }) 
           <AccordionItem value={groupName} key={groupName}>
             <AccordionTrigger className="text-lg font-headline capitalize hover:no-underline">
               <div className="flex items-center">
-                  {groupIcons[groupName] || <FileText className="mr-2 h-5 w-5 text-primary"/>} {groupName}
+                  {groupIcons[groupName] || <FileText className="mr-3 h-5 w-5 text-primary"/>} {groupName}
               </div>
             </AccordionTrigger>
             <AccordionContent>
@@ -170,8 +162,8 @@ const MetadataAccordion = ({ data }: { data: Record<string, any> | undefined }) 
                         <Table>
                         <TableHeader>
                             <TableRow className="hover:bg-transparent">
-                            <TableHead className="w-[35%]">Key</TableHead>
-                            <TableHead>Value</TableHead>
+                            <TableHead className="w-[35%] font-headline">Key</TableHead>
+                            <TableHead className="font-headline">Value</TableHead>
                             </TableRow>
                         </TableHeader>
                         <TableBody>
@@ -190,6 +182,18 @@ const MetadataAccordion = ({ data }: { data: Record<string, any> | undefined }) 
             </AccordionContent>
           </AccordionItem>
         ))}
+         { !groupedData.gps && (
+            <AccordionItem value="gps">
+                <AccordionTrigger className="text-lg font-headline capitalize hover:no-underline">
+                    <div className="flex items-center">
+                        <MapPin className="mr-3 h-5 w-5 text-primary" /> GPS
+                    </div>
+                </AccordionTrigger>
+                <AccordionContent>
+                    <p className="text-sm text-muted-foreground text-center py-4">No GPS data found in this file.</p>
+                </AccordionContent>
+            </AccordionItem>
+         )}
       </Accordion>
     </>
   );
@@ -198,7 +202,7 @@ const MetadataAccordion = ({ data }: { data: Record<string, any> | undefined }) 
 
 export function MetadataDisplay({ file }: MetadataDisplayProps) {
   return (
-    <Card className="h-full flex flex-col min-h-[500px]">
+    <Card className="h-full flex flex-col min-h-[500px] bg-card/80 backdrop-blur-sm">
       <CardHeader>
         <CardTitle className="font-headline tracking-tight">Metadata Viewer</CardTitle>
         <CardDescription className="truncate h-5">
@@ -238,7 +242,7 @@ export function MetadataDisplay({ file }: MetadataDisplayProps) {
             )}
           </>
         ) : (
-          <div className="flex flex-col items-center justify-center h-full border-2 border-dashed rounded-lg">
+          <div className="flex flex-col items-center justify-center h-full border-2 border-dashed rounded-lg border-muted-foreground/30">
             <FileQuestion className="w-16 h-16 mb-4 text-primary/50" />
             <p className="font-semibold text-lg">No file selected</p>
             <p className="text-sm text-muted-foreground">Select a file from the queue to see its metadata.</p>

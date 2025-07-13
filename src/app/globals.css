@@ -10,42 +10,42 @@
     --card-foreground: 224 71.4% 4.1%;
     --popover: 0 0% 100%;
     --popover-foreground: 224 71.4% 4.1%;
-    --primary: 210 100% 50%;
-    --primary-foreground: 355.7 100% 97.3%;
+    --primary: 120 100% 50%;
+    --primary-foreground: 120 100% 10%;
     --secondary: 220 14.3% 95.9%;
     --secondary-foreground: 220.9 39.3% 11%;
     --muted: 220 14.3% 95.9%;
     --muted-foreground: 220 8.9% 46.1%;
-    --accent: 220 14.3% 95.9%;
-    --accent-foreground: 220.9 39.3% 11%;
+    --accent: 183 100% 71%;
+    --accent-foreground: 183 100% 10%;
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 355.7 100% 97.3%;
     --border: 220 13% 91%;
     --input: 220 13% 91%;
-    --ring: 210 100% 50%;
+    --ring: 120 100% 50%;
     --radius: 0.75rem;
   }
  
   .dark {
-    --background: 222 47% 11%;
+    --background: 0 0% 13%;
     --foreground: 210 40% 98%;
-    --card: 217 33% 17%;
+    --card: 240 5% 15%;
     --card-foreground: 210 40% 98%;
     --popover: 222 47% 11%;
     --popover-foreground: 210 40% 98%;
-    --primary: 210 100% 50%;
-    --primary-foreground: 222 47% 11%;
-    --secondary: 217 33% 25%;
+    --primary: 120 100% 50%;
+    --primary-foreground: 120 100% 10%;
+    --secondary: 240 5% 20%;
     --secondary-foreground: 210 40% 98%;
-    --muted: 217 33% 25%;
+    --muted: 240 5% 20%;
     --muted-foreground: 215 20% 65%;
-    --accent: 210 100% 50%;
-    --accent-foreground: 210 40% 98%;
+    --accent: 183 100% 71%;
+    --accent-foreground: 183 100% 10%;
     --destructive: 0 63% 31%;
     --destructive-foreground: 210 40% 98%;
-    --border: 217 33% 25%;
-    --input: 217 33% 25%;
-    --ring: 210 100% 50%;
+    --border: 240 5% 25%;
+    --input: 240 5% 25%;
+    --ring: 120 100% 50%;
   }
 }
  
@@ -55,5 +55,36 @@
   }
   body {
     @apply bg-background text-foreground;
+    font-feature-settings: "rlig" 1, "calt" 1;
+  }
+}
+
+@layer components {
+  .glow-border {
+    @apply relative overflow-hidden rounded-lg border border-primary/20;
+  }
+  .glow-border::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 200%;
+    height: 100%;
+    background: conic-gradient(from 180deg at 50% 50%, #00ff0000 0%, #00ff0044 50%, #00ff0000 100%);
+    animation: rotate-glow 5s linear infinite;
+    z-index: 1;
+    pointer-events: none;
+  }
+  .glow-border > * {
+    z-index: 2;
+  }
+}
+
+@keyframes rotate-glow {
+  from {
+    transform: translateX(-50%) rotate(0deg);
+  }
+  to {
+    transform: translateX(-50%) rotate(360deg);
   }
 }

@@ -353,6 +353,7 @@ var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/node_modules/next/dist/compiled/react/index.js [app-client] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$cloud$2d$upload$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__UploadCloud$3e$__ = __turbopack_context__.i("[project]/node_modules/lucide-react/dist/esm/icons/cloud-upload.js [app-client] (ecmascript) <export default as UploadCloud>");
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$file$2d$up$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__FileUp$3e$__ = __turbopack_context__.i("[project]/node_modules/lucide-react/dist/esm/icons/file-up.js [app-client] (ecmascript) <export default as FileUp>");
+var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$folder$2d$up$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__FolderUp$3e$__ = __turbopack_context__.i("[project]/node_modules/lucide-react/dist/esm/icons/folder-up.js [app-client] (ecmascript) <export default as FolderUp>");
 var __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$ui$2f$button$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/src/components/ui/button.tsx [app-client] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$ui$2f$card$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/src/components/ui/card.tsx [app-client] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$utils$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/src/lib/utils.ts [app-client] (ecmascript)");
@@ -367,10 +368,13 @@ var _s = __turbopack_context__.k.signature();
 function FileUploadForm({ onFilesAdded }) {
     _s();
     const fileInputRef = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useRef"])(null);
+    const dirInputRef = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useRef"])(null);
     const [isDragging, setIsDragging] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])(false);
     const handleFileChange = (e)=>{
         if (e.target.files && e.target.files.length > 0) {
             onFilesAdded(e.target.files);
+            // Reset the input value to allow uploading the same file again
+            e.target.value = '';
         }
     };
     const handleDragEnter = (e)=>{
@@ -396,6 +400,7 @@ function FileUploadForm({ onFilesAdded }) {
         }
     };
     return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$ui$2f$card$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Card"], {
+        className: "bg-card/80 backdrop-blur-sm",
         children: [
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$ui$2f$card$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["CardHeader"], {
                 children: [
@@ -404,20 +409,20 @@ function FileUploadForm({ onFilesAdded }) {
                         children: "Upload Files"
                     }, void 0, false, {
                         fileName: "[project]/src/components/dashboard/file-upload-form.tsx",
-                        lineNumber: 53,
+                        lineNumber: 56,
                         columnNumber: 9
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$ui$2f$card$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["CardDescription"], {
-                        children: "Select or drop files to analyze"
+                        children: "Select or drop files and folders to analyze"
                     }, void 0, false, {
                         fileName: "[project]/src/components/dashboard/file-upload-form.tsx",
-                        lineNumber: 54,
+                        lineNumber: 57,
                         columnNumber: 9
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "[project]/src/components/dashboard/file-upload-form.tsx",
-                lineNumber: 52,
+                lineNumber: 55,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$ui$2f$card$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["CardContent"], {
@@ -435,7 +440,7 @@ function FileUploadForm({ onFilesAdded }) {
                                 className: "w-12 h-12 text-muted-foreground transition-transform group-hover:scale-110 group-hover:text-primary"
                             }, void 0, false, {
                                 fileName: "[project]/src/components/dashboard/file-upload-form.tsx",
-                                lineNumber: 68,
+                                lineNumber: 71,
                                 columnNumber: 11
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -446,49 +451,82 @@ function FileUploadForm({ onFilesAdded }) {
                                         children: "Click to upload"
                                     }, void 0, false, {
                                         fileName: "[project]/src/components/dashboard/file-upload-form.tsx",
-                                        lineNumber: 70,
+                                        lineNumber: 73,
                                         columnNumber: 13
                                     }, this),
                                     " or drag and drop."
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/src/components/dashboard/file-upload-form.tsx",
-                                lineNumber: 69,
+                                lineNumber: 72,
                                 columnNumber: 11
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
                                 className: "text-xs text-muted-foreground/80 mt-1",
-                                children: "All file types supported"
+                                children: "Files and folders are supported"
                             }, void 0, false, {
                                 fileName: "[project]/src/components/dashboard/file-upload-form.tsx",
-                                lineNumber: 72,
+                                lineNumber: 75,
                                 columnNumber: 11
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/src/components/dashboard/file-upload-form.tsx",
-                        lineNumber: 57,
+                        lineNumber: 60,
                         columnNumber: 9
                     }, this),
-                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$ui$2f$button$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Button"], {
-                        onClick: ()=>fileInputRef.current?.click(),
+                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                        className: "flex flex-col sm:flex-row gap-2",
                         children: [
-                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$file$2d$up$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__FileUp$3e$__["FileUp"], {}, void 0, false, {
+                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$ui$2f$button$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Button"], {
+                                onClick: ()=>fileInputRef.current?.click(),
+                                className: "flex-1",
+                                children: [
+                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$file$2d$up$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__FileUp$3e$__["FileUp"], {}, void 0, false, {
+                                        fileName: "[project]/src/components/dashboard/file-upload-form.tsx",
+                                        lineNumber: 79,
+                                        columnNumber: 17
+                                    }, this),
+                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
+                                        children: "Select Files"
+                                    }, void 0, false, {
+                                        fileName: "[project]/src/components/dashboard/file-upload-form.tsx",
+                                        lineNumber: 80,
+                                        columnNumber: 17
+                                    }, this)
+                                ]
+                            }, void 0, true, {
                                 fileName: "[project]/src/components/dashboard/file-upload-form.tsx",
-                                lineNumber: 75,
+                                lineNumber: 78,
                                 columnNumber: 13
                             }, this),
-                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
-                                children: "Select Files"
-                            }, void 0, false, {
+                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$ui$2f$button$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Button"], {
+                                onClick: ()=>dirInputRef.current?.click(),
+                                variant: "secondary",
+                                className: "flex-1",
+                                children: [
+                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$folder$2d$up$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__FolderUp$3e$__["FolderUp"], {}, void 0, false, {
+                                        fileName: "[project]/src/components/dashboard/file-upload-form.tsx",
+                                        lineNumber: 83,
+                                        columnNumber: 17
+                                    }, this),
+                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
+                                        children: "Select Folder"
+                                    }, void 0, false, {
+                                        fileName: "[project]/src/components/dashboard/file-upload-form.tsx",
+                                        lineNumber: 84,
+                                        columnNumber: 17
+                                    }, this)
+                                ]
+                            }, void 0, true, {
                                 fileName: "[project]/src/components/dashboard/file-upload-form.tsx",
-                                lineNumber: 76,
+                                lineNumber: 82,
                                 columnNumber: 13
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/src/components/dashboard/file-upload-form.tsx",
-                        lineNumber: 74,
+                        lineNumber: 77,
                         columnNumber: 9
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("input", {
@@ -500,34 +538,36 @@ function FileUploadForm({ onFilesAdded }) {
                         accept: "*"
                     }, void 0, false, {
                         fileName: "[project]/src/components/dashboard/file-upload-form.tsx",
-                        lineNumber: 78,
+                        lineNumber: 87,
                         columnNumber: 9
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("input", {
                         type: "file",
+                        ref: dirInputRef,
                         onChange: handleFileChange,
                         className: "hidden",
-                        webkitdirectory: "",
-                        mozdirectory: ""
+                        webkitdirectory: "true",
+                        mozdirectory: "true",
+                        directory: ""
                     }, void 0, false, {
                         fileName: "[project]/src/components/dashboard/file-upload-form.tsx",
-                        lineNumber: 87,
+                        lineNumber: 95,
                         columnNumber: 9
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "[project]/src/components/dashboard/file-upload-form.tsx",
-                lineNumber: 56,
+                lineNumber: 59,
                 columnNumber: 7
             }, this)
         ]
     }, void 0, true, {
         fileName: "[project]/src/components/dashboard/file-upload-form.tsx",
-        lineNumber: 51,
+        lineNumber: 54,
         columnNumber: 5
     }, this);
 }
-_s(FileUploadForm, "UVwffXkjAZ0sCTsG+piCKVVmsLQ=");
+_s(FileUploadForm, "Pxt2ufEEfV+PGsbJcj1YrzCcjJw=");
 _c = FileUploadForm;
 var _c;
 __turbopack_context__.k.register(_c, "FileUploadForm");
@@ -959,6 +999,7 @@ var __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$ui$2f$s
 var __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$dashboard$2f$file$2d$queue$2d$item$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/src/components/dashboard/file-queue-item.tsx [app-client] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$inbox$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__Inbox$3e$__ = __turbopack_context__.i("[project]/node_modules/lucide-react/dist/esm/icons/inbox.js [app-client] (ecmascript) <export default as Inbox>");
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$trash$2d$2$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__Trash2$3e$__ = __turbopack_context__.i("[project]/node_modules/lucide-react/dist/esm/icons/trash-2.js [app-client] (ecmascript) <export default as Trash2>");
+var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$square$2d$check$2d$big$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__CheckSquare$3e$__ = __turbopack_context__.i("[project]/node_modules/lucide-react/dist/esm/icons/square-check-big.js [app-client] (ecmascript) <export default as CheckSquare>");
 var __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$ui$2f$separator$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/src/components/ui/separator.tsx [app-client] (ecmascript)");
 "use client";
 ;
@@ -969,9 +1010,9 @@ var __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$ui$2f$s
 ;
 ;
 function FileQueue({ files, selectedFile, onFileSelect, onClearQueue, onClearCompleted }) {
-    const hasCompleted = files.some((f)=>f.status === 'done' || f.status === 'error');
+    const completedCount = files.filter((f)=>f.status === 'done' || f.status === 'error').length;
     return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$ui$2f$card$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Card"], {
-        className: "flex flex-col h-full",
+        className: "flex flex-col h-full bg-card/80 backdrop-blur-sm",
         children: [
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$ui$2f$card$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["CardHeader"], {
                 children: [
@@ -980,20 +1021,20 @@ function FileQueue({ files, selectedFile, onFileSelect, onClearQueue, onClearCom
                         children: "Processing Queue"
                     }, void 0, false, {
                         fileName: "[project]/src/components/dashboard/file-queue.tsx",
-                        lineNumber: 26,
+                        lineNumber: 27,
                         columnNumber: 9
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$ui$2f$card$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["CardDescription"], {
                         children: "Files pending metadata extraction and redaction."
                     }, void 0, false, {
                         fileName: "[project]/src/components/dashboard/file-queue.tsx",
-                        lineNumber: 27,
+                        lineNumber: 28,
                         columnNumber: 9
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "[project]/src/components/dashboard/file-queue.tsx",
-                lineNumber: 25,
+                lineNumber: 26,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$ui$2f$card$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["CardContent"], {
@@ -1008,12 +1049,12 @@ function FileQueue({ files, selectedFile, onFileSelect, onClearQueue, onClearCom
                                 onSelect: ()=>onFileSelect(file)
                             }, file.id, false, {
                                 fileName: "[project]/src/components/dashboard/file-queue.tsx",
-                                lineNumber: 34,
+                                lineNumber: 35,
                                 columnNumber: 17
                             }, this))
                     }, void 0, false, {
                         fileName: "[project]/src/components/dashboard/file-queue.tsx",
-                        lineNumber: 32,
+                        lineNumber: 33,
                         columnNumber: 13
                     }, this) : /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                         className: "flex flex-col items-center justify-center h-full text-center text-muted-foreground p-4",
@@ -1022,7 +1063,7 @@ function FileQueue({ files, selectedFile, onFileSelect, onClearQueue, onClearCom
                                 className: "w-14 h-14 mb-4 text-primary/50"
                             }, void 0, false, {
                                 fileName: "[project]/src/components/dashboard/file-queue.tsx",
-                                lineNumber: 44,
+                                lineNumber: 45,
                                 columnNumber: 15
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -1030,7 +1071,7 @@ function FileQueue({ files, selectedFile, onFileSelect, onClearQueue, onClearCom
                                 children: "Queue is empty"
                             }, void 0, false, {
                                 fileName: "[project]/src/components/dashboard/file-queue.tsx",
-                                lineNumber: 45,
+                                lineNumber: 46,
                                 columnNumber: 15
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -1038,54 +1079,74 @@ function FileQueue({ files, selectedFile, onFileSelect, onClearQueue, onClearCom
                                 children: "Upload files to begin processing."
                             }, void 0, false, {
                                 fileName: "[project]/src/components/dashboard/file-queue.tsx",
-                                lineNumber: 46,
+                                lineNumber: 47,
                                 columnNumber: 15
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/src/components/dashboard/file-queue.tsx",
-                        lineNumber: 43,
+                        lineNumber: 44,
                         columnNumber: 13
                     }, this)
                 }, void 0, false, {
                     fileName: "[project]/src/components/dashboard/file-queue.tsx",
-                    lineNumber: 30,
+                    lineNumber: 31,
                     columnNumber: 9
                 }, this)
             }, void 0, false, {
                 fileName: "[project]/src/components/dashboard/file-queue.tsx",
-                lineNumber: 29,
+                lineNumber: 30,
                 columnNumber: 7
             }, this),
             files.length > 0 && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Fragment"], {
                 children: [
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$ui$2f$separator$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Separator"], {}, void 0, false, {
                         fileName: "[project]/src/components/dashboard/file-queue.tsx",
-                        lineNumber: 53,
+                        lineNumber: 54,
                         columnNumber: 11
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$ui$2f$card$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["CardFooter"], {
                         className: "flex flex-col sm:flex-row gap-2 p-4",
-                        children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$ui$2f$button$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Button"], {
-                            variant: "outline",
-                            onClick: onClearQueue,
-                            className: "w-full sm:w-auto",
-                            children: [
-                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$trash$2d$2$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__Trash2$3e$__["Trash2"], {}, void 0, false, {
-                                    fileName: "[project]/src/components/dashboard/file-queue.tsx",
-                                    lineNumber: 57,
-                                    columnNumber: 15
-                                }, this),
-                                " Clear All"
-                            ]
-                        }, void 0, true, {
-                            fileName: "[project]/src/components/dashboard/file-queue.tsx",
-                            lineNumber: 56,
-                            columnNumber: 13
-                        }, this)
-                    }, void 0, false, {
+                        children: [
+                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$ui$2f$button$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Button"], {
+                                variant: "outline",
+                                onClick: onClearCompleted,
+                                className: "w-full sm:w-auto flex-1",
+                                disabled: completedCount === 0,
+                                children: [
+                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$square$2d$check$2d$big$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__CheckSquare$3e$__["CheckSquare"], {}, void 0, false, {
+                                        fileName: "[project]/src/components/dashboard/file-queue.tsx",
+                                        lineNumber: 57,
+                                        columnNumber: 15
+                                    }, this),
+                                    " Clear Completed"
+                                ]
+                            }, void 0, true, {
+                                fileName: "[project]/src/components/dashboard/file-queue.tsx",
+                                lineNumber: 56,
+                                columnNumber: 13
+                            }, this),
+                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$ui$2f$button$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Button"], {
+                                variant: "destructive",
+                                onClick: onClearQueue,
+                                className: "w-full sm:w-auto flex-1",
+                                children: [
+                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$trash$2d$2$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__Trash2$3e$__["Trash2"], {}, void 0, false, {
+                                        fileName: "[project]/src/components/dashboard/file-queue.tsx",
+                                        lineNumber: 60,
+                                        columnNumber: 15
+                                    }, this),
+                                    " Clear All"
+                                ]
+                            }, void 0, true, {
+                                fileName: "[project]/src/components/dashboard/file-queue.tsx",
+                                lineNumber: 59,
+                                columnNumber: 13
+                            }, this)
+                        ]
+                    }, void 0, true, {
                         fileName: "[project]/src/components/dashboard/file-queue.tsx",
-                        lineNumber: 54,
+                        lineNumber: 55,
                         columnNumber: 11
                     }, this)
                 ]
@@ -1093,7 +1154,7 @@ function FileQueue({ files, selectedFile, onFileSelect, onClearQueue, onClearCom
         ]
     }, void 0, true, {
         fileName: "[project]/src/components/dashboard/file-queue.tsx",
-        lineNumber: 24,
+        lineNumber: 25,
         columnNumber: 5
     }, this);
 }
@@ -1432,6 +1493,7 @@ var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$re
 ;
 ;
 const renderValue = (value)=>{
+    if (value === null || value === undefined) return "N/A";
     if (value instanceof Array && value.every((v)=>typeof v === 'number')) {
         return value.join(', ');
     }
@@ -1463,7 +1525,10 @@ const groupMetadata = (data = {})=>{
             'MIMEType',
             'MajorBrand',
             'PDFFormatVersion',
-            'IsLinearized'
+            'IsLinearized',
+            'Title',
+            'Subject',
+            'Keywords'
         ],
         image: [
             'ImageWidth',
@@ -1483,14 +1548,17 @@ const groupMetadata = (data = {})=>{
             'ExposureTime',
             'FNumber',
             'ISOSpeedRatings',
-            'ExposureBias',
+            'ExposureBiasValue',
             'FocalLength',
             'Flash',
             'MeteringMode',
             'WhiteBalance',
             'DateTimeOriginal',
             'CreateDate',
-            'ModifyDate'
+            'ModifyDate',
+            'Author',
+            'Creator',
+            'Producer'
         ],
         gps: [
             'GPSLatitude',
@@ -1505,10 +1573,10 @@ const groupMetadata = (data = {})=>{
     };
     const otherData = {};
     for(const key in data){
-        if (key === 'info') continue;
+        if (key === 'info' || data[key] === null || data[key] === undefined) continue;
         let assigned = false;
         for (const [groupName, groupKeywords] of Object.entries(keywords)){
-            if (groupKeywords.some((k)=>key.toLowerCase().includes(k.toLowerCase()))) {
+            if (groupKeywords.some((k)=>key.toLowerCase() === k.toLowerCase())) {
                 groups[groupName][key] = data[key];
                 assigned = true;
                 break;
@@ -1519,16 +1587,13 @@ const groupMetadata = (data = {})=>{
         }
     }
     if (data.info && typeof data.info === 'string') {
-        otherData['info'] = data.info;
-    } else if (data.info) {
-        Object.assign(otherData, data.info);
+        otherData['Info'] = data.info;
     }
     if (Object.keys(otherData).length > 0) {
         groups.other = otherData;
     }
-    // Clean up empty groups, but always keep file and gps
     for(const groupName in groups){
-        if (groupName !== 'file' && groupName !== 'gps' && Object.keys(groups[groupName]).length === 0) {
+        if (Object.keys(groups[groupName]).length === 0) {
             delete groups[groupName];
         }
     }
@@ -1536,28 +1601,19 @@ const groupMetadata = (data = {})=>{
 };
 const getGpsCoords = (gpsData)=>{
     const { GPSLatitude, GPSLongitude, GPSLatitudeRef, GPSLongitudeRef } = gpsData;
-    if (!GPSLatitude || !GPSLongitude || !GPSLatitudeRef || !GPSLongitudeRef) return null;
-    const toDecimal = (gps, ref)=>{
-        let decimal = gps[0] + gps[1] / 60 + gps[2] / 3600;
-        if (ref === 'S' || ref === 'W') {
-            decimal = -decimal;
-        }
-        return decimal;
+    if (!GPSLatitude || !GPSLongitude) return null;
+    let lat = Array.isArray(GPSLatitude) ? GPSLatitude[0] + GPSLatitude[1] / 60 + GPSLatitude[2] / 3600 : parseFloat(GPSLatitude);
+    let lon = Array.isArray(GPSLongitude) ? GPSLongitude[0] + GPSLongitude[1] / 60 + GPSLongitude[2] / 3600 : parseFloat(GPSLongitude);
+    if (isNaN(lat) || isNaN(lon)) return null;
+    if (GPSLatitudeRef === 'S') lat = -lat;
+    if (GPSLongitudeRef === 'W') lon = -lon;
+    return {
+        lat,
+        lon
     };
-    try {
-        const lat = toDecimal(GPSLatitude, GPSLatitudeRef);
-        const lon = toDecimal(GPSLongitude, GPSLongitudeRef);
-        return {
-            lat,
-            lon
-        };
-    } catch (e) {
-        return null;
-    }
 };
 const GpsMap = ({ coords })=>{
     const { lat, lon } = coords;
-    // Using OpenStreetMap embed
     const mapUrl = `https://www.openstreetmap.org/export/embed.html?bbox=${lon - 0.01},${lat - 0.01},${lon + 0.01},${lat + 0.01}&layer=mapnik&marker=${lat},${lon}`;
     return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
         className: "aspect-video w-full overflow-hidden rounded-lg border",
@@ -1570,15 +1626,18 @@ const GpsMap = ({ coords })=>{
             marginWidth: 0,
             src: mapUrl,
             title: "GPS Location Map",
-            "aria-label": "GPS Location Map"
+            "aria-label": "GPS Location Map",
+            style: {
+                filter: 'invert(90%) hue-rotate(180deg)'
+            }
         }, void 0, false, {
             fileName: "[project]/src/components/dashboard/metadata-display.tsx",
-            lineNumber: 116,
+            lineNumber: 107,
             columnNumber: 13
         }, this)
     }, void 0, false, {
         fileName: "[project]/src/components/dashboard/metadata-display.tsx",
-        lineNumber: 115,
+        lineNumber: 106,
         columnNumber: 9
     }, this);
 };
@@ -1590,7 +1649,7 @@ const MetadataAccordion = ({ data })=>{
             children: "No metadata available."
         }, void 0, false, {
             fileName: "[project]/src/components/dashboard/metadata-display.tsx",
-            lineNumber: 133,
+            lineNumber: 125,
             columnNumber: 14
         }, this);
     }
@@ -1600,38 +1659,38 @@ const MetadataAccordion = ({ data })=>{
     const hasGpsData = Object.keys(gpsData).length > 0;
     const groupIcons = {
         file: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$file$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__File$3e$__["File"], {
-            className: "mr-2 h-5 w-5 text-primary"
+            className: "mr-3 h-5 w-5 text-primary"
         }, void 0, false, {
             fileName: "[project]/src/components/dashboard/metadata-display.tsx",
-            lineNumber: 142,
+            lineNumber: 134,
             columnNumber: 13
         }, this),
         image: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$image$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__Image$3e$__["Image"], {
-            className: "mr-2 h-5 w-5 text-primary"
+            className: "mr-3 h-5 w-5 text-primary"
         }, void 0, false, {
             fileName: "[project]/src/components/dashboard/metadata-display.tsx",
-            lineNumber: 143,
+            lineNumber: 135,
             columnNumber: 14
         }, this),
         camera: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$camera$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__Camera$3e$__["Camera"], {
-            className: "mr-2 h-5 w-5 text-primary"
+            className: "mr-3 h-5 w-5 text-primary"
         }, void 0, false, {
             fileName: "[project]/src/components/dashboard/metadata-display.tsx",
-            lineNumber: 144,
+            lineNumber: 136,
             columnNumber: 15
         }, this),
         gps: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$map$2d$pin$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__MapPin$3e$__["MapPin"], {
-            className: "mr-2 h-5 w-5 text-primary"
+            className: "mr-3 h-5 w-5 text-primary"
         }, void 0, false, {
             fileName: "[project]/src/components/dashboard/metadata-display.tsx",
-            lineNumber: 145,
+            lineNumber: 137,
             columnNumber: 12
         }, this),
         other: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$file$2d$text$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__FileText$3e$__["FileText"], {
-            className: "mr-2 h-5 w-5 text-primary"
+            className: "mr-3 h-5 w-5 text-primary"
         }, void 0, false, {
             fileName: "[project]/src/components/dashboard/metadata-display.tsx",
-            lineNumber: 146,
+            lineNumber: 138,
             columnNumber: 14
         }, this)
     };
@@ -1642,147 +1701,197 @@ const MetadataAccordion = ({ data })=>{
             type: "multiple",
             defaultValue: defaultOpen,
             className: "w-full",
-            children: Object.entries(groupedData).map(([groupName, groupData])=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$ui$2f$accordion$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["AccordionItem"], {
-                    value: groupName,
+            children: [
+                Object.entries(groupedData).map(([groupName, groupData])=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$ui$2f$accordion$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["AccordionItem"], {
+                        value: groupName,
+                        children: [
+                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$ui$2f$accordion$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["AccordionTrigger"], {
+                                className: "text-lg font-headline capitalize hover:no-underline",
+                                children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                    className: "flex items-center",
+                                    children: [
+                                        groupIcons[groupName] || /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$file$2d$text$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__FileText$3e$__["FileText"], {
+                                            className: "mr-3 h-5 w-5 text-primary"
+                                        }, void 0, false, {
+                                            fileName: "[project]/src/components/dashboard/metadata-display.tsx",
+                                            lineNumber: 151,
+                                            columnNumber: 45
+                                        }, this),
+                                        " ",
+                                        groupName
+                                    ]
+                                }, void 0, true, {
+                                    fileName: "[project]/src/components/dashboard/metadata-display.tsx",
+                                    lineNumber: 150,
+                                    columnNumber: 15
+                                }, this)
+                            }, void 0, false, {
+                                fileName: "[project]/src/components/dashboard/metadata-display.tsx",
+                                lineNumber: 149,
+                                columnNumber: 13
+                            }, this),
+                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$ui$2f$accordion$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["AccordionContent"], {
+                                children: [
+                                    groupName === 'gps' && gpsCoords && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                        className: "mb-4",
+                                        children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(GpsMap, {
+                                            coords: gpsCoords
+                                        }, void 0, false, {
+                                            fileName: "[project]/src/components/dashboard/metadata-display.tsx",
+                                            lineNumber: 157,
+                                            columnNumber: 25
+                                        }, this)
+                                    }, void 0, false, {
+                                        fileName: "[project]/src/components/dashboard/metadata-display.tsx",
+                                        lineNumber: 156,
+                                        columnNumber: 21
+                                    }, this),
+                                    Object.keys(groupData).length > 0 ? /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                        className: "relative overflow-hidden rounded-md border",
+                                        children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$ui$2f$table$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Table"], {
+                                            children: [
+                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$ui$2f$table$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["TableHeader"], {
+                                                    children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$ui$2f$table$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["TableRow"], {
+                                                        className: "hover:bg-transparent",
+                                                        children: [
+                                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$ui$2f$table$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["TableHead"], {
+                                                                className: "w-[35%] font-headline",
+                                                                children: "Key"
+                                                            }, void 0, false, {
+                                                                fileName: "[project]/src/components/dashboard/metadata-display.tsx",
+                                                                lineNumber: 165,
+                                                                columnNumber: 29
+                                                            }, this),
+                                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$ui$2f$table$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["TableHead"], {
+                                                                className: "font-headline",
+                                                                children: "Value"
+                                                            }, void 0, false, {
+                                                                fileName: "[project]/src/components/dashboard/metadata-display.tsx",
+                                                                lineNumber: 166,
+                                                                columnNumber: 29
+                                                            }, this)
+                                                        ]
+                                                    }, void 0, true, {
+                                                        fileName: "[project]/src/components/dashboard/metadata-display.tsx",
+                                                        lineNumber: 164,
+                                                        columnNumber: 29
+                                                    }, this)
+                                                }, void 0, false, {
+                                                    fileName: "[project]/src/components/dashboard/metadata-display.tsx",
+                                                    lineNumber: 163,
+                                                    columnNumber: 25
+                                                }, this),
+                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$ui$2f$table$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["TableBody"], {
+                                                    children: Object.entries(groupData).map(([key, value])=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$ui$2f$table$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["TableRow"], {
+                                                            children: [
+                                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$ui$2f$table$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["TableCell"], {
+                                                                    className: "font-mono text-xs font-medium text-muted-foreground break-words",
+                                                                    children: key
+                                                                }, void 0, false, {
+                                                                    fileName: "[project]/src/components/dashboard/metadata-display.tsx",
+                                                                    lineNumber: 172,
+                                                                    columnNumber: 33
+                                                                }, this),
+                                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$ui$2f$table$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["TableCell"], {
+                                                                    className: "font-mono text-xs whitespace-pre-wrap break-all",
+                                                                    children: renderValue(value)
+                                                                }, void 0, false, {
+                                                                    fileName: "[project]/src/components/dashboard/metadata-display.tsx",
+                                                                    lineNumber: 173,
+                                                                    columnNumber: 33
+                                                                }, this)
+                                                            ]
+                                                        }, key, true, {
+                                                            fileName: "[project]/src/components/dashboard/metadata-display.tsx",
+                                                            lineNumber: 171,
+                                                            columnNumber: 29
+                                                        }, this))
+                                                }, void 0, false, {
+                                                    fileName: "[project]/src/components/dashboard/metadata-display.tsx",
+                                                    lineNumber: 169,
+                                                    columnNumber: 25
+                                                }, this)
+                                            ]
+                                        }, void 0, true, {
+                                            fileName: "[project]/src/components/dashboard/metadata-display.tsx",
+                                            lineNumber: 162,
+                                            columnNumber: 25
+                                        }, this)
+                                    }, void 0, false, {
+                                        fileName: "[project]/src/components/dashboard/metadata-display.tsx",
+                                        lineNumber: 161,
+                                        columnNumber: 21
+                                    }, this) : groupName === 'gps' && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
+                                        className: "text-sm text-muted-foreground text-center py-4",
+                                        children: "No GPS data found in this file."
+                                    }, void 0, false, {
+                                        fileName: "[project]/src/components/dashboard/metadata-display.tsx",
+                                        lineNumber: 180,
+                                        columnNumber: 44
+                                    }, this)
+                                ]
+                            }, void 0, true, {
+                                fileName: "[project]/src/components/dashboard/metadata-display.tsx",
+                                lineNumber: 154,
+                                columnNumber: 13
+                            }, this)
+                        ]
+                    }, groupName, true, {
+                        fileName: "[project]/src/components/dashboard/metadata-display.tsx",
+                        lineNumber: 148,
+                        columnNumber: 11
+                    }, this)),
+                !groupedData.gps && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$ui$2f$accordion$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["AccordionItem"], {
+                    value: "gps",
                     children: [
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$ui$2f$accordion$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["AccordionTrigger"], {
                             className: "text-lg font-headline capitalize hover:no-underline",
                             children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                 className: "flex items-center",
                                 children: [
-                                    groupIcons[groupName] || /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$file$2d$text$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__FileText$3e$__["FileText"], {
-                                        className: "mr-2 h-5 w-5 text-primary"
+                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$map$2d$pin$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__MapPin$3e$__["MapPin"], {
+                                        className: "mr-3 h-5 w-5 text-primary"
                                     }, void 0, false, {
                                         fileName: "[project]/src/components/dashboard/metadata-display.tsx",
-                                        lineNumber: 159,
-                                        columnNumber: 45
+                                        lineNumber: 189,
+                                        columnNumber: 25
                                     }, this),
-                                    " ",
-                                    groupName
+                                    " GPS"
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/src/components/dashboard/metadata-display.tsx",
-                                lineNumber: 158,
-                                columnNumber: 15
+                                lineNumber: 188,
+                                columnNumber: 21
                             }, this)
                         }, void 0, false, {
                             fileName: "[project]/src/components/dashboard/metadata-display.tsx",
-                            lineNumber: 157,
-                            columnNumber: 13
+                            lineNumber: 187,
+                            columnNumber: 17
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$ui$2f$accordion$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["AccordionContent"], {
-                            children: [
-                                groupName === 'gps' && gpsCoords && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                    className: "mb-4",
-                                    children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(GpsMap, {
-                                        coords: gpsCoords
-                                    }, void 0, false, {
-                                        fileName: "[project]/src/components/dashboard/metadata-display.tsx",
-                                        lineNumber: 165,
-                                        columnNumber: 25
-                                    }, this)
-                                }, void 0, false, {
-                                    fileName: "[project]/src/components/dashboard/metadata-display.tsx",
-                                    lineNumber: 164,
-                                    columnNumber: 21
-                                }, this),
-                                Object.keys(groupData).length > 0 ? /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                    className: "relative overflow-hidden rounded-md border",
-                                    children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$ui$2f$table$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Table"], {
-                                        children: [
-                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$ui$2f$table$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["TableHeader"], {
-                                                children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$ui$2f$table$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["TableRow"], {
-                                                    className: "hover:bg-transparent",
-                                                    children: [
-                                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$ui$2f$table$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["TableHead"], {
-                                                            className: "w-[35%]",
-                                                            children: "Key"
-                                                        }, void 0, false, {
-                                                            fileName: "[project]/src/components/dashboard/metadata-display.tsx",
-                                                            lineNumber: 173,
-                                                            columnNumber: 29
-                                                        }, this),
-                                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$ui$2f$table$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["TableHead"], {
-                                                            children: "Value"
-                                                        }, void 0, false, {
-                                                            fileName: "[project]/src/components/dashboard/metadata-display.tsx",
-                                                            lineNumber: 174,
-                                                            columnNumber: 29
-                                                        }, this)
-                                                    ]
-                                                }, void 0, true, {
-                                                    fileName: "[project]/src/components/dashboard/metadata-display.tsx",
-                                                    lineNumber: 172,
-                                                    columnNumber: 29
-                                                }, this)
-                                            }, void 0, false, {
-                                                fileName: "[project]/src/components/dashboard/metadata-display.tsx",
-                                                lineNumber: 171,
-                                                columnNumber: 25
-                                            }, this),
-                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$ui$2f$table$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["TableBody"], {
-                                                children: Object.entries(groupData).map(([key, value])=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$ui$2f$table$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["TableRow"], {
-                                                        children: [
-                                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$ui$2f$table$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["TableCell"], {
-                                                                className: "font-mono text-xs font-medium text-muted-foreground break-words",
-                                                                children: key
-                                                            }, void 0, false, {
-                                                                fileName: "[project]/src/components/dashboard/metadata-display.tsx",
-                                                                lineNumber: 180,
-                                                                columnNumber: 33
-                                                            }, this),
-                                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$ui$2f$table$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["TableCell"], {
-                                                                className: "font-mono text-xs whitespace-pre-wrap break-all",
-                                                                children: renderValue(value)
-                                                            }, void 0, false, {
-                                                                fileName: "[project]/src/components/dashboard/metadata-display.tsx",
-                                                                lineNumber: 181,
-                                                                columnNumber: 33
-                                                            }, this)
-                                                        ]
-                                                    }, key, true, {
-                                                        fileName: "[project]/src/components/dashboard/metadata-display.tsx",
-                                                        lineNumber: 179,
-                                                        columnNumber: 29
-                                                    }, this))
-                                            }, void 0, false, {
-                                                fileName: "[project]/src/components/dashboard/metadata-display.tsx",
-                                                lineNumber: 177,
-                                                columnNumber: 25
-                                            }, this)
-                                        ]
-                                    }, void 0, true, {
-                                        fileName: "[project]/src/components/dashboard/metadata-display.tsx",
-                                        lineNumber: 170,
-                                        columnNumber: 25
-                                    }, this)
-                                }, void 0, false, {
-                                    fileName: "[project]/src/components/dashboard/metadata-display.tsx",
-                                    lineNumber: 169,
-                                    columnNumber: 21
-                                }, this) : groupName === 'gps' && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
-                                    className: "text-sm text-muted-foreground text-center py-4",
-                                    children: "No GPS data found in this file."
-                                }, void 0, false, {
-                                    fileName: "[project]/src/components/dashboard/metadata-display.tsx",
-                                    lineNumber: 188,
-                                    columnNumber: 44
-                                }, this)
-                            ]
-                        }, void 0, true, {
+                            children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
+                                className: "text-sm text-muted-foreground text-center py-4",
+                                children: "No GPS data found in this file."
+                            }, void 0, false, {
+                                fileName: "[project]/src/components/dashboard/metadata-display.tsx",
+                                lineNumber: 193,
+                                columnNumber: 21
+                            }, this)
+                        }, void 0, false, {
                             fileName: "[project]/src/components/dashboard/metadata-display.tsx",
-                            lineNumber: 162,
-                            columnNumber: 13
+                            lineNumber: 192,
+                            columnNumber: 17
                         }, this)
                     ]
-                }, groupName, true, {
+                }, void 0, true, {
                     fileName: "[project]/src/components/dashboard/metadata-display.tsx",
-                    lineNumber: 156,
-                    columnNumber: 11
-                }, this))
-        }, void 0, false, {
+                    lineNumber: 186,
+                    columnNumber: 13
+                }, this)
+            ]
+        }, void 0, true, {
             fileName: "[project]/src/components/dashboard/metadata-display.tsx",
-            lineNumber: 154,
+            lineNumber: 146,
             columnNumber: 7
         }, this)
     }, void 0, false);
@@ -1790,7 +1899,7 @@ const MetadataAccordion = ({ data })=>{
 _c1 = MetadataAccordion;
 function MetadataDisplay({ file }) {
     return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$ui$2f$card$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Card"], {
-        className: "h-full flex flex-col min-h-[500px]",
+        className: "h-full flex flex-col min-h-[500px] bg-card/80 backdrop-blur-sm",
         children: [
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$ui$2f$card$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["CardHeader"], {
                 children: [
@@ -1799,7 +1908,7 @@ function MetadataDisplay({ file }) {
                         children: "Metadata Viewer"
                     }, void 0, false, {
                         fileName: "[project]/src/components/dashboard/metadata-display.tsx",
-                        lineNumber: 203,
+                        lineNumber: 207,
                         columnNumber: 9
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$ui$2f$card$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["CardDescription"], {
@@ -1807,13 +1916,13 @@ function MetadataDisplay({ file }) {
                         children: file ? `Showing metadata for: ${file.file.name}` : "Select a processed file to view its metadata."
                     }, void 0, false, {
                         fileName: "[project]/src/components/dashboard/metadata-display.tsx",
-                        lineNumber: 204,
+                        lineNumber: 208,
                         columnNumber: 9
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "[project]/src/components/dashboard/metadata-display.tsx",
-                lineNumber: 202,
+                lineNumber: 206,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$ui$2f$card$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["CardContent"], {
@@ -1834,14 +1943,14 @@ function MetadataDisplay({ file }) {
                                                     className: "mr-2 h-4 w-4"
                                                 }, void 0, false, {
                                                     fileName: "[project]/src/components/dashboard/metadata-display.tsx",
-                                                    lineNumber: 214,
+                                                    lineNumber: 218,
                                                     columnNumber: 49
                                                 }, this),
                                                 "Redacted"
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/src/components/dashboard/metadata-display.tsx",
-                                            lineNumber: 214,
+                                            lineNumber: 218,
                                             columnNumber: 19
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$ui$2f$tabs$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["TabsTrigger"], {
@@ -1851,20 +1960,20 @@ function MetadataDisplay({ file }) {
                                                     className: "mr-2 h-4 w-4"
                                                 }, void 0, false, {
                                                     fileName: "[project]/src/components/dashboard/metadata-display.tsx",
-                                                    lineNumber: 215,
+                                                    lineNumber: 219,
                                                     columnNumber: 49
                                                 }, this),
                                                 "Original"
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/src/components/dashboard/metadata-display.tsx",
-                                            lineNumber: 215,
+                                            lineNumber: 219,
                                             columnNumber: 19
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/src/components/dashboard/metadata-display.tsx",
-                                    lineNumber: 213,
+                                    lineNumber: 217,
                                     columnNumber: 17
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$ui$2f$tabs$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["TabsContent"], {
@@ -1874,12 +1983,12 @@ function MetadataDisplay({ file }) {
                                         data: file.redactedMetadata
                                     }, void 0, false, {
                                         fileName: "[project]/src/components/dashboard/metadata-display.tsx",
-                                        lineNumber: 218,
+                                        lineNumber: 222,
                                         columnNumber: 19
                                     }, this)
                                 }, void 0, false, {
                                     fileName: "[project]/src/components/dashboard/metadata-display.tsx",
-                                    lineNumber: 217,
+                                    lineNumber: 221,
                                     columnNumber: 17
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$ui$2f$tabs$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["TabsContent"], {
@@ -1889,18 +1998,18 @@ function MetadataDisplay({ file }) {
                                         data: file.metadata
                                     }, void 0, false, {
                                         fileName: "[project]/src/components/dashboard/metadata-display.tsx",
-                                        lineNumber: 221,
+                                        lineNumber: 225,
                                         columnNumber: 19
                                     }, this)
                                 }, void 0, false, {
                                     fileName: "[project]/src/components/dashboard/metadata-display.tsx",
-                                    lineNumber: 220,
+                                    lineNumber: 224,
                                     columnNumber: 17
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/src/components/dashboard/metadata-display.tsx",
-                            lineNumber: 212,
+                            lineNumber: 216,
                             columnNumber: 15
                         }, this),
                         file.status === 'error' && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1910,7 +2019,7 @@ function MetadataDisplay({ file }) {
                                     className: "w-12 h-12 mb-4"
                                 }, void 0, false, {
                                     fileName: "[project]/src/components/dashboard/metadata-display.tsx",
-                                    lineNumber: 227,
+                                    lineNumber: 231,
                                     columnNumber: 21
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("h3", {
@@ -1918,7 +2027,7 @@ function MetadataDisplay({ file }) {
                                     children: "Processing Failed"
                                 }, void 0, false, {
                                     fileName: "[project]/src/components/dashboard/metadata-display.tsx",
-                                    lineNumber: 228,
+                                    lineNumber: 232,
                                     columnNumber: 21
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -1926,13 +2035,13 @@ function MetadataDisplay({ file }) {
                                     children: file.error
                                 }, void 0, false, {
                                     fileName: "[project]/src/components/dashboard/metadata-display.tsx",
-                                    lineNumber: 229,
+                                    lineNumber: 233,
                                     columnNumber: 21
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/src/components/dashboard/metadata-display.tsx",
-                            lineNumber: 226,
+                            lineNumber: 230,
                             columnNumber: 17
                         }, this),
                         (file.status === 'processing' || file.status === 'queued') && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1942,7 +2051,7 @@ function MetadataDisplay({ file }) {
                                     className: "w-12 h-12 mb-4 animate-spin text-primary"
                                 }, void 0, false, {
                                     fileName: "[project]/src/components/dashboard/metadata-display.tsx",
-                                    lineNumber: 234,
+                                    lineNumber: 238,
                                     columnNumber: 17
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -1950,7 +2059,7 @@ function MetadataDisplay({ file }) {
                                     children: file.status === 'processing' ? 'Analyzing file...' : 'Queued for processing'
                                 }, void 0, false, {
                                     fileName: "[project]/src/components/dashboard/metadata-display.tsx",
-                                    lineNumber: 235,
+                                    lineNumber: 239,
                                     columnNumber: 17
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -1958,24 +2067,24 @@ function MetadataDisplay({ file }) {
                                     children: "Please wait a moment."
                                 }, void 0, false, {
                                     fileName: "[project]/src/components/dashboard/metadata-display.tsx",
-                                    lineNumber: 236,
+                                    lineNumber: 240,
                                     columnNumber: 17
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/src/components/dashboard/metadata-display.tsx",
-                            lineNumber: 233,
+                            lineNumber: 237,
                             columnNumber: 15
                         }, this)
                     ]
                 }, void 0, true) : /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                    className: "flex flex-col items-center justify-center h-full border-2 border-dashed rounded-lg",
+                    className: "flex flex-col items-center justify-center h-full border-2 border-dashed rounded-lg border-muted-foreground/30",
                     children: [
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$file$2d$question$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__FileQuestion$3e$__["FileQuestion"], {
                             className: "w-16 h-16 mb-4 text-primary/50"
                         }, void 0, false, {
                             fileName: "[project]/src/components/dashboard/metadata-display.tsx",
-                            lineNumber: 242,
+                            lineNumber: 246,
                             columnNumber: 13
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -1983,7 +2092,7 @@ function MetadataDisplay({ file }) {
                             children: "No file selected"
                         }, void 0, false, {
                             fileName: "[project]/src/components/dashboard/metadata-display.tsx",
-                            lineNumber: 243,
+                            lineNumber: 247,
                             columnNumber: 13
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -1991,24 +2100,24 @@ function MetadataDisplay({ file }) {
                             children: "Select a file from the queue to see its metadata."
                         }, void 0, false, {
                             fileName: "[project]/src/components/dashboard/metadata-display.tsx",
-                            lineNumber: 244,
+                            lineNumber: 248,
                             columnNumber: 13
                         }, this)
                     ]
                 }, void 0, true, {
                     fileName: "[project]/src/components/dashboard/metadata-display.tsx",
-                    lineNumber: 241,
+                    lineNumber: 245,
                     columnNumber: 11
                 }, this)
             }, void 0, false, {
                 fileName: "[project]/src/components/dashboard/metadata-display.tsx",
-                lineNumber: 208,
+                lineNumber: 212,
                 columnNumber: 7
             }, this)
         ]
     }, void 0, true, {
         fileName: "[project]/src/components/dashboard/metadata-display.tsx",
-        lineNumber: 201,
+        lineNumber: 205,
         columnNumber: 5
     }, this);
 }
@@ -2043,19 +2152,22 @@ if (typeof globalThis.$RefreshHelpers$ === 'object' && globalThis.$RefreshHelper
 var { g: global, __dirname, k: __turbopack_refresh__, m: module } = __turbopack_context__;
 {
 __turbopack_context__.s({
-    "default": (()=>Home)
+    "default": (()=>HomePage)
 });
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/node_modules/next/dist/compiled/react/jsx-dev-runtime.js [app-client] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/node_modules/next/dist/compiled/react/index.js [app-client] (ecmascript)");
+var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$navigation$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/node_modules/next/navigation.js [app-client] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$uuid$2f$dist$2f$esm$2d$browser$2f$v4$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__v4$3e$__ = __turbopack_context__.i("[project]/node_modules/uuid/dist/esm-browser/v4.js [app-client] (ecmascript) <export default as v4>");
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$exifr$2f$dist$2f$full$2e$esm$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/node_modules/exifr/dist/full.esm.mjs [app-client] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$pdfjs$2d$dist$2f$build$2f$pdf$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/node_modules/pdfjs-dist/build/pdf.mjs [app-client] (ecmascript)");
+var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$loader$2d$circle$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__Loader2$3e$__ = __turbopack_context__.i("[project]/node_modules/lucide-react/dist/esm/icons/loader-circle.js [app-client] (ecmascript) <export default as Loader2>");
 var __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$layout$2f$header$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/src/components/layout/header.tsx [app-client] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$dashboard$2f$file$2d$upload$2d$form$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/src/components/dashboard/file-upload-form.tsx [app-client] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$dashboard$2f$file$2d$queue$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/src/components/dashboard/file-queue.tsx [app-client] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$dashboard$2f$metadata$2d$display$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/src/components/dashboard/metadata-display.tsx [app-client] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$app$2f$data$3a$d13745__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$text$2f$javascript$3e$__ = __turbopack_context__.i("[project]/src/app/data:d13745 [app-client] (ecmascript) <text/javascript>");
 var __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$hooks$2f$use$2d$toast$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/src/hooks/use-toast.ts [app-client] (ecmascript)");
+var __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$hooks$2f$use$2d$auth$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/src/hooks/use-auth.tsx [app-client] (ecmascript)");
 ;
 var _s = __turbopack_context__.k.signature();
 "use client";
@@ -2069,12 +2181,13 @@ var _s = __turbopack_context__.k.signature();
 ;
 ;
 ;
-// Setup PDF.js worker
+;
+;
+;
 if ("TURBOPACK compile-time truthy", 1) {
     __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$pdfjs$2d$dist$2f$build$2f$pdf$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["GlobalWorkerOptions"].workerSrc = `//cdnjs.cloudflare.com/ajax/libs/pdf.js/${__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$pdfjs$2d$dist$2f$build$2f$pdf$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["version"]}/pdf.worker.min.js`;
 }
 if ("object" !== 'undefined' && !window.crypto) {
-    // A simple fallback for environments without crypto
     Object.defineProperty(window, 'crypto', {
         value: {
             getRandomValues: (array)=>{
@@ -2107,7 +2220,6 @@ async function extractMetadata(file) {
                 iptc: true
             });
             if (exifData && Object.keys(exifData).length > 0) {
-                // Ensure GPS data is correctly formatted if present
                 if (exifData.latitude) exifData.GPSLatitude = exifData.latitude;
                 if (exifData.longitude) exifData.GPSLongitude = exifData.longitude;
                 return {
@@ -2115,7 +2227,6 @@ async function extractMetadata(file) {
                     ...exifData
                 };
             }
-            // DEMO: If it's a JPEG with no GPS, add sample data
             if (file.type === 'image/jpeg' && (!exifData || !exifData.latitude)) {
                 return {
                     ...baseMetadata,
@@ -2147,9 +2258,19 @@ async function extractMetadata(file) {
                 data: arrayBuffer
             }).promise;
             const metadata = (await pdf.getMetadata())?.info;
+            const customData = {
+                Author: metadata?.Author,
+                Creator: metadata?.Creator,
+                CreationDate: metadata?.CreationDate,
+                ModificationDate: metadata?.ModDate,
+                Producer: metadata?.Producer,
+                Title: metadata?.Title,
+                Subject: metadata?.Subject,
+                Keywords: metadata?.Keywords
+            };
             return {
                 ...baseMetadata,
-                ...metadata
+                ...customData
             };
         }
     } catch (e) {
@@ -2164,11 +2285,24 @@ async function extractMetadata(file) {
         info: "Detailed metadata extraction is not supported for this file type."
     };
 }
-function Home() {
+function HomePage() {
     _s();
+    const { user, loading } = (0, __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$hooks$2f$use$2d$auth$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useAuth"])();
+    const router = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$navigation$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useRouter"])();
     const [files, setFiles] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])([]);
     const [selectedFile, setSelectedFile] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])(null);
     const { toast } = (0, __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$hooks$2f$use$2d$toast$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useToast"])();
+    (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useEffect"])({
+        "HomePage.useEffect": ()=>{
+            if (!loading && !user) {
+                router.push("/login");
+            }
+        }
+    }["HomePage.useEffect"], [
+        user,
+        loading,
+        router
+    ]);
     const handleFilesAdded = (newFiles)=>{
         const processedFiles = Array.from(newFiles).map((file)=>({
                 id: window.crypto.randomUUID(),
@@ -2182,30 +2316,30 @@ function Home() {
             ]);
     };
     const processQueue = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useCallback"])({
-        "Home.useCallback[processQueue]": async ()=>{
+        "HomePage.useCallback[processQueue]": async ()=>{
             const fileToProcess = files.find({
-                "Home.useCallback[processQueue].fileToProcess": (f)=>f.status === 'queued'
-            }["Home.useCallback[processQueue].fileToProcess"]);
+                "HomePage.useCallback[processQueue].fileToProcess": (f)=>f.status === 'queued'
+            }["HomePage.useCallback[processQueue].fileToProcess"]);
             if (!fileToProcess) return;
             setFiles({
-                "Home.useCallback[processQueue]": (prev)=>prev.map({
-                        "Home.useCallback[processQueue]": (f)=>f.id === fileToProcess.id ? {
+                "HomePage.useCallback[processQueue]": (prev)=>prev.map({
+                        "HomePage.useCallback[processQueue]": (f)=>f.id === fileToProcess.id ? {
                                 ...f,
                                 status: 'processing',
                                 progress: 25
                             } : f
-                    }["Home.useCallback[processQueue]"])
-            }["Home.useCallback[processQueue]"]);
+                    }["HomePage.useCallback[processQueue]"])
+            }["HomePage.useCallback[processQueue]"]);
             try {
                 const metadata = await extractMetadata(fileToProcess.file);
                 setFiles({
-                    "Home.useCallback[processQueue]": (prev)=>prev.map({
-                            "Home.useCallback[processQueue]": (f)=>f.id === fileToProcess.id ? {
+                    "HomePage.useCallback[processQueue]": (prev)=>prev.map({
+                            "HomePage.useCallback[processQueue]": (f)=>f.id === fileToProcess.id ? {
                                     ...f,
                                     progress: 50
                                 } : f
-                        }["Home.useCallback[processQueue]"])
-                }["Home.useCallback[processQueue]"]);
+                        }["HomePage.useCallback[processQueue]"])
+                }["HomePage.useCallback[processQueue]"]);
                 const result = await (0, __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$app$2f$data$3a$d13745__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$text$2f$javascript$3e$__["processFile"])(metadata);
                 const updatedFile = {
                     ...fileToProcess,
@@ -2215,10 +2349,10 @@ function Home() {
                     redactedMetadata: result.redacted
                 };
                 setFiles({
-                    "Home.useCallback[processQueue]": (prev)=>prev.map({
-                            "Home.useCallback[processQueue]": (f)=>f.id === fileToProcess.id ? updatedFile : f
-                        }["Home.useCallback[processQueue]"])
-                }["Home.useCallback[processQueue]"]);
+                    "HomePage.useCallback[processQueue]": (prev)=>prev.map({
+                            "HomePage.useCallback[processQueue]": (f)=>f.id === fileToProcess.id ? updatedFile : f
+                        }["HomePage.useCallback[processQueue]"])
+                }["HomePage.useCallback[processQueue]"]);
                 if (!selectedFile || selectedFile.id === fileToProcess.id) {
                     setSelectedFile(updatedFile);
                 }
@@ -2232,10 +2366,10 @@ function Home() {
                     progress: 0
                 };
                 setFiles({
-                    "Home.useCallback[processQueue]": (prev)=>prev.map({
-                            "Home.useCallback[processQueue]": (f)=>f.id === fileToProcess.id ? errorFile : f
-                        }["Home.useCallback[processQueue]"])
-                }["Home.useCallback[processQueue]"]);
+                    "HomePage.useCallback[processQueue]": (prev)=>prev.map({
+                            "HomePage.useCallback[processQueue]": (f)=>f.id === fileToProcess.id ? errorFile : f
+                        }["HomePage.useCallback[processQueue]"])
+                }["HomePage.useCallback[processQueue]"]);
                 if (!selectedFile || selectedFile.id === fileToProcess.id) {
                     setSelectedFile(errorFile);
                 }
@@ -2246,21 +2380,21 @@ function Home() {
                 });
             }
         }
-    }["Home.useCallback[processQueue]"], [
+    }["HomePage.useCallback[processQueue]"], [
         files,
         toast,
         selectedFile
     ]);
     (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useEffect"])({
-        "Home.useEffect": ()=>{
+        "HomePage.useEffect": ()=>{
             const processing = files.some({
-                "Home.useEffect.processing": (f)=>f.status === 'processing'
-            }["Home.useEffect.processing"]);
+                "HomePage.useEffect.processing": (f)=>f.status === 'processing'
+            }["HomePage.useEffect.processing"]);
             if (!processing) {
                 processQueue();
             }
         }
-    }["Home.useEffect"], [
+    }["HomePage.useEffect"], [
         files,
         processQueue
     ]);
@@ -2274,12 +2408,38 @@ function Home() {
             setSelectedFile(null);
         }
     };
+    if (loading || !user) {
+        return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+            className: "flex min-h-screen w-full flex-col items-center justify-center bg-background",
+            children: [
+                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$loader$2d$circle$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__Loader2$3e$__["Loader2"], {
+                    className: "h-12 w-12 animate-spin text-primary"
+                }, void 0, false, {
+                    fileName: "[project]/src/app/page.tsx",
+                    lineNumber: 203,
+                    columnNumber: 9
+                }, this),
+                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
+                    className: "mt-4 text-muted-foreground",
+                    children: "Initializing..."
+                }, void 0, false, {
+                    fileName: "[project]/src/app/page.tsx",
+                    lineNumber: 204,
+                    columnNumber: 9
+                }, this)
+            ]
+        }, void 0, true, {
+            fileName: "[project]/src/app/page.tsx",
+            lineNumber: 202,
+            columnNumber: 7
+        }, this);
+    }
     return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
         className: "flex min-h-screen w-full flex-col bg-background font-body text-foreground",
         children: [
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$layout$2f$header$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Header"], {}, void 0, false, {
                 fileName: "[project]/src/app/page.tsx",
-                lineNumber: 185,
+                lineNumber: 211,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("main", {
@@ -2294,7 +2454,7 @@ function Home() {
                                     onFilesAdded: handleFilesAdded
                                 }, void 0, false, {
                                     fileName: "[project]/src/app/page.tsx",
-                                    lineNumber: 189,
+                                    lineNumber: 215,
                                     columnNumber: 13
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$dashboard$2f$file$2d$queue$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["FileQueue"], {
@@ -2305,13 +2465,13 @@ function Home() {
                                     onClearCompleted: handleClearCompleted
                                 }, void 0, false, {
                                     fileName: "[project]/src/app/page.tsx",
-                                    lineNumber: 190,
+                                    lineNumber: 216,
                                     columnNumber: 13
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/src/app/page.tsx",
-                            lineNumber: 188,
+                            lineNumber: 214,
                             columnNumber: 11
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2320,40 +2480,42 @@ function Home() {
                                 file: selectedFile
                             }, void 0, false, {
                                 fileName: "[project]/src/app/page.tsx",
-                                lineNumber: 199,
+                                lineNumber: 225,
                                 columnNumber: 13
                             }, this)
                         }, void 0, false, {
                             fileName: "[project]/src/app/page.tsx",
-                            lineNumber: 198,
+                            lineNumber: 224,
                             columnNumber: 11
                         }, this)
                     ]
                 }, void 0, true, {
                     fileName: "[project]/src/app/page.tsx",
-                    lineNumber: 187,
+                    lineNumber: 213,
                     columnNumber: 9
                 }, this)
             }, void 0, false, {
                 fileName: "[project]/src/app/page.tsx",
-                lineNumber: 186,
+                lineNumber: 212,
                 columnNumber: 7
             }, this)
         ]
     }, void 0, true, {
         fileName: "[project]/src/app/page.tsx",
-        lineNumber: 184,
+        lineNumber: 210,
         columnNumber: 5
     }, this);
 }
-_s(Home, "EFW59fY6pJvpfffKIi8SfJ2IWbA=", false, function() {
+_s(HomePage, "rDGKr8XQl6E247ta3AUZRucB3fs=", false, function() {
     return [
+        __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$hooks$2f$use$2d$auth$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useAuth"],
+        __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$navigation$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useRouter"],
         __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$hooks$2f$use$2d$toast$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useToast"]
     ];
 });
-_c = Home;
+_c = HomePage;
 var _c;
-__turbopack_context__.k.register(_c, "Home");
+__turbopack_context__.k.register(_c, "HomePage");
 if (typeof globalThis.$RefreshHelpers$ === 'object' && globalThis.$RefreshHelpers !== null) {
     __turbopack_context__.k.registerExports(module, globalThis.$RefreshHelpers$);
 }

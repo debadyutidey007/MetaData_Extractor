@@ -2,7 +2,7 @@
 "use client";
 
 import * as React from "react";
-import { UploadCloud, FileUp } from "lucide-react";
+import { UploadCloud, FileUp, FolderUp } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { cn } from "@/lib/utils";
@@ -13,11 +13,14 @@ interface FileUploadFormProps {
 
 export function FileUploadForm({ onFilesAdded }: FileUploadFormProps) {
   const fileInputRef = React.useRef<HTMLInputElement>(null);
+  const dirInputRef = React.useRef<HTMLInputElement>(null);
   const [isDragging, setIsDragging] = React.useState(false);
 
   const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     if (e.target.files && e.target.files.length > 0) {
       onFilesAdded(e.target.files);
+      // Reset the input value to allow uploading the same file again
+      e.target.value = '';
     }
   };
 
@@ -48,10 +51,10 @@ export function FileUploadForm({ onFilesAdded }: FileUploadFormProps) {
   };
 
   return (
-    <Card>
+    <Card className="bg-card/80 backdrop-blur-sm">
       <CardHeader>
         <CardTitle className="font-headline tracking-tight">Upload Files</CardTitle>
-        <CardDescription>Select or drop files to analyze</CardDescription>
+        <CardDescription>Select or drop files and folders to analyze</CardDescription>
       </CardHeader>
       <CardContent className="flex flex-col gap-4">
         <div
@@ -69,12 +72,18 @@ export function FileUploadForm({ onFilesAdded }: FileUploadFormProps) {
           <p className="mt-4 text-center text-muted-foreground">
             <span className="font-semibold text-primary">Click to upload</span> or drag and drop.
           </p>
-          <p className="text-xs text-muted-foreground/80 mt-1">All file types supported</p>
+          <p className="text-xs text-muted-foreground/80 mt-1">Files and folders are supported</p>
         </div>
-        <Button onClick={() => fileInputRef.current?.click()}>
-            <FileUp />
-            <span>Select Files</span>
-        </Button>
+        <div className="flex flex-col sm:flex-row gap-2">
+            <Button onClick={() => fileInputRef.current?.click()} className="flex-1">
+                <FileUp />
+                <span>Select Files</span>
+            </Button>
+            <Button onClick={() => dirInputRef.current?.click()} variant="secondary" className="flex-1">
+                <FolderUp />
+                <span>Select Folder</span>
+            </Button>
+        </div>
         <input
           type="file"
           ref={fileInputRef}
@@ -83,13 +92,14 @@ export function FileUploadForm({ onFilesAdded }: FileUploadFormProps) {
           multiple
           accept="*"
         />
-        {/* Hide directory upload for a cleaner interface */}
         <input
           type="file"
+          ref={dirInputRef}
           onChange={handleFileChange}
           className="hidden"
-          webkitdirectory=""
-          mozdirectory=""
+          webkitdirectory="true"
+          mozdirectory="true"
+          directory=""
         />
       </CardContent>
     </Card>

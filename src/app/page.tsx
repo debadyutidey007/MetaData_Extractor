@@ -1,9 +1,13 @@
+
 "use client";
 
 import * as React from "react";
+
+import { useRouter } from "next/navigation";
 import { v4 as uuidv4 } from "uuid";
 import exifr from 'exifr';
 import * as pdfjsLib from 'pdfjs-dist';
+import { Loader2 } from "lucide-react";
 import { Header } from "@/components/layout/header";
 import { FileUploadForm } from "@/components/dashboard/file-upload-form";
 import { FileQueue } from "@/components/dashboard/file-queue";
@@ -11,13 +15,12 @@ import { MetadataDisplay } from "@/components/dashboard/metadata-display";
 import { processFile } from "@/app/actions";
 import type { ProcessedFile } from "@/lib/types";
 import { useToast } from "@/hooks/use-toast";
+import { useAuth } from "@/hooks/use-auth";
 
-// Setup PDF.js worker
 if (typeof window !== 'undefined') {
   pdfjsLib.GlobalWorkerOptions.workerSrc = `//cdnjs.cloudflare.com/ajax/libs/pdf.js/${pdfjsLib.version}/pdf.worker.min.js`;
 }
 
-// Polyfill for uuid in browser environments that might need it
 declare global {
   interface Window {
     crypto: {
@@ -28,7 +31,6 @@ declare global {
 }
 
 if (typeof window !== 'undefined' && !window.crypto) {
-  // A simple fallback for environments without crypto
   Object.defineProperty(window, 'crypto', {
     value: {
       getRandomValues: (array: any) => {
@@ -62,16 +64,13 @@ async function extractMetadata(file: File): Promise<Record<string, any>> {
                 xmp: true,
                 iptc: true,
             });
-            
+
             if (exifData && Object.keys(exifData).length > 0) {
-                 // Ensure GPS data is correctly formatted if present
                  if (exifData.latitude) exifData.GPSLatitude = exifData.latitude;
                  if (exifData.longitude) exifData.GPSLongitude = exifData.longitude;
-                 
                  return { ...baseMetadata, ...exifData };
             }
 
-            // DEMO: If it's a JPEG with no GPS, add sample data
             if (file.type === 'image/jpeg' && (!exifData || !exifData.latitude)) {
                 return {
                     ...baseMetadata,
@@ -80,33 +79,51 @@ async function extractMetadata(file: File): Promise<Record<string, any>> {
                     GPSLatitudeRef: 'N',
                     GPSLongitude: [122, 25, 4.25],
                     GPSLongitudeRef: 'W',
-                    latitude: 37.82444166666666, // Decimal for map
-                    longitude: -122.41784722222222, // Decimal for map
+                    latitude: 37.82444166666666,
+                    longitude: -122.41784722222222,
                     SampleData: "This is sample data. Upload an original phone photo to see real coordinates."
                 };
             }
-            
+
             return { ...baseMetadata, info: "No detailed EXIF data found in this image." };
 
         } else if (file.type === 'application/pdf') {
             const arrayBuffer = await file.arrayBuffer();
             const pdf = await pdfjsLib.getDocument({ data: arrayBuffer }).promise;
             const metadata = (await pdf.getMetadata())?.info;
-            return { ...baseMetadata, ...metadata };
+            const customData = {
+              Author: metadata?.Author,
+              Creator: metadata?.Creator,
+              CreationDate: metadata?.CreationDate,
+              ModificationDate: metadata?.ModDate,
+              Producer: metadata?.Producer,
+              Title: metadata?.Title,
+              Subject: metadata?.Subject,
+              Keywords: metadata?.Keywords,
+            }
+            return { ...baseMetadata, ...customData };
         }
     } catch (e) {
         console.error("Metadata extraction error:", e);
         return { ...baseMetadata, error: "Could not extract metadata due to an error." };
     }
-    
+
     return { ...baseMetadata, info: "Detailed metadata extraction is not supported for this file type." };
 }
 
-
-export default function Home() {
+export default function HomePage() {
+  const { user, loading } = useAuth();
+  const router = useRouter();
   const [files, setFiles] = React.useState<ProcessedFile[]>([]);
   const [selectedFile, setSelectedFile] = React.useState<ProcessedFile | null>(null);
   const { toast } = useToast();
+
+  React.useEffect(() => {
+    if (!loading && !user) {
+      router.push("/login");
+    }
+  }, [user, loading, router]);
+
 
   const handleFilesAdded = (newFiles: FileList) => {
     const processedFiles: ProcessedFile[] = Array.from(newFiles).map(file => ({
@@ -123,21 +140,21 @@ export default function Home() {
     if (!fileToProcess) return;
 
     setFiles(prev => prev.map(f => f.id === fileToProcess.id ? { ...f, status: 'processing', progress: 25 } : f));
-    
+
     try {
         const metadata = await extractMetadata(fileToProcess.file);
         setFiles(prev => prev.map(f => f.id === fileToProcess.id ? { ...f, progress: 50 } : f));
-        
+
         const result = await processFile(metadata);
-        
-        const updatedFile = { 
-            ...fileToProcess, 
-            status: 'done' as const, 
+
+        const updatedFile = {
+            ...fileToProcess,
+            status: 'done' as const,
             progress: 100,
             metadata: result.original,
             redactedMetadata: result.redacted
         };
-      
+
       setFiles(prev => prev.map(f => f.id === fileToProcess.id ? updatedFile : f));
 
       if (!selectedFile || selectedFile.id === fileToProcess.id) {
@@ -148,7 +165,7 @@ export default function Home() {
       const errorMessage = error instanceof Error ? error.message : "An unknown error occurred.";
       const errorFile = { ...fileToProcess, status: 'error' as const, error: errorMessage, progress: 0 };
       setFiles(prev => prev.map(f => f.id === fileToProcess.id ? errorFile : f));
-      
+
       if (!selectedFile || selectedFile.id === fileToProcess.id) {
         setSelectedFile(errorFile);
       }
@@ -178,6 +195,15 @@ export default function Home() {
     if (selectedFile && (selectedFile.status === 'done' || selectedFile.status === 'error')) {
       setSelectedFile(null);
     }
+  }
+
+  if (loading || !user) {
+    return (
+      <div className="flex min-h-screen w-full flex-col items-center justify-center bg-background">
+        <Loader2 className="h-12 w-12 animate-spin text-primary" />
+        <p className="mt-4 text-muted-foreground">Initializing...</p>
+      </div>
+    );
   }
 
   return (

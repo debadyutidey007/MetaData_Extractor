@@ -1,3 +1,4 @@
+
 "use client";
 
 import React from 'react';
@@ -6,7 +7,7 @@ import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle }
 import { ScrollArea } from "@/components/ui/scroll-area";
 import type { ProcessedFile } from "@/lib/types";
 import { FileQueueItem } from "./file-queue-item";
-import { Inbox, Trash2, CheckCircle } from "lucide-react";
+import { Inbox, Trash2, CheckSquare } from "lucide-react";
 import { Separator } from "@/components/ui/separator";
 
 interface FileQueueProps {
@@ -18,10 +19,10 @@ interface FileQueueProps {
 }
  
 export function FileQueue({ files, selectedFile, onFileSelect, onClearQueue, onClearCompleted }: FileQueueProps) {
-  const hasCompleted = files.some(f => f.status === 'done' || f.status === 'error');
-
+  const completedCount = files.filter(f => f.status === 'done' || f.status === 'error').length;
+  
   return (
-    <Card className="flex flex-col h-full">
+    <Card className="flex flex-col h-full bg-card/80 backdrop-blur-sm">
       <CardHeader>
         <CardTitle className="font-headline tracking-tight">Processing Queue</CardTitle>
         <CardDescription>Files pending metadata extraction and redaction.</CardDescription>
@@ -52,8 +53,10 @@ export function FileQueue({ files, selectedFile, onFileSelect, onClearQueue, onC
         <>
           <Separator />
           <CardFooter className="flex flex-col sm:flex-row gap-2 p-4">
-            {/* Clear All button remains */}
-            <Button variant="outline" onClick={onClearQueue} className="w-full sm:w-auto">
+            <Button variant="outline" onClick={onClearCompleted} className="w-full sm:w-auto flex-1" disabled={completedCount === 0}>
+              <CheckSquare /> Clear Completed
+            </Button>
+            <Button variant="destructive" onClick={onClearQueue} className="w-full sm:w-auto flex-1">
               <Trash2 /> Clear All
             </Button>
           </CardFooter>

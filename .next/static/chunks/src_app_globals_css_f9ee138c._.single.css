@@ -252,42 +252,42 @@ img, video {
   --card-foreground: 224 71.4% 4.1%;
   --popover: 0 0% 100%;
   --popover-foreground: 224 71.4% 4.1%;
-  --primary: 210 100% 50%;
-  --primary-foreground: 355.7 100% 97.3%;
+  --primary: 120 100% 50%;
+  --primary-foreground: 120 100% 10%;
   --secondary: 220 14.3% 95.9%;
   --secondary-foreground: 220.9 39.3% 11%;
   --muted: 220 14.3% 95.9%;
   --muted-foreground: 220 8.9% 46.1%;
-  --accent: 220 14.3% 95.9%;
-  --accent-foreground: 220.9 39.3% 11%;
+  --accent: 183 100% 71%;
+  --accent-foreground: 183 100% 10%;
   --destructive: 0 84.2% 60.2%;
   --destructive-foreground: 355.7 100% 97.3%;
   --border: 220 13% 91%;
   --input: 220 13% 91%;
-  --ring: 210 100% 50%;
+  --ring: 120 100% 50%;
   --radius: .75rem;
 }
 
 .dark {
-  --background: 222 47% 11%;
+  --background: 0 0% 13%;
   --foreground: 210 40% 98%;
-  --card: 217 33% 17%;
+  --card: 240 5% 15%;
   --card-foreground: 210 40% 98%;
   --popover: 222 47% 11%;
   --popover-foreground: 210 40% 98%;
-  --primary: 210 100% 50%;
-  --primary-foreground: 222 47% 11%;
-  --secondary: 217 33% 25%;
+  --primary: 120 100% 50%;
+  --primary-foreground: 120 100% 10%;
+  --secondary: 240 5% 20%;
   --secondary-foreground: 210 40% 98%;
-  --muted: 217 33% 25%;
+  --muted: 240 5% 20%;
   --muted-foreground: 215 20% 65%;
-  --accent: 210 100% 50%;
-  --accent-foreground: 210 40% 98%;
+  --accent: 183 100% 71%;
+  --accent-foreground: 183 100% 10%;
   --destructive: 0 63% 31%;
   --destructive-foreground: 210 40% 98%;
-  --border: 217 33% 25%;
-  --input: 217 33% 25%;
-  --ring: 210 100% 50%;
+  --border: 240 5% 25%;
+  --input: 240 5% 25%;
+  --ring: 120 100% 50%;
 }
 
 * {
@@ -297,6 +297,32 @@ img, video {
 body {
   background-color: hsl(var(--background));
   color: hsl(var(--foreground));
+  font-feature-settings: "rlig" 1, "calt" 1;
+}
+
+.glow-border {
+  border-radius: var(--radius);
+  border-width: 1px;
+  border-color: hsl(var(--primary) / .2);
+  position: relative;
+  overflow: hidden;
+}
+
+.glow-border:before {
+  content: "";
+  z-index: 1;
+  pointer-events: none;
+  background: conic-gradient(from 180deg, #0f00 0%, #0f04 50%, #0f00 100%);
+  width: 200%;
+  height: 100%;
+  animation: 5s linear infinite rotate-glow;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.glow-border > * {
+  z-index: 2;
 }
 
 .sr-only {
@@ -389,6 +415,10 @@ body {
   left: .5rem;
 }
 
+.left-8 {
+  left: 2rem;
+}
+
 .left-\[50\%\] {
   left: 50%;
 }
@@ -423,6 +453,10 @@ body {
 
 .top-4 {
   top: 1rem;
+}
+
+.top-8 {
+  top: 2rem;
 }
 
 .top-\[50\%\] {
@@ -481,6 +515,10 @@ body {
   margin-right: .5rem;
 }
 
+.mr-3 {
+  margin-right: .75rem;
+}
+
 .mt-1 {
   margin-top: .25rem;
 }
@@ -491,6 +529,10 @@ body {
 
 .mt-4 {
   margin-top: 1rem;
+}
+
+.mt-6 {
+  margin-top: 1.5rem;
 }
 
 .block {
@@ -555,6 +597,10 @@ body {
 
 .h-2\.5 {
   height: .625rem;
+}
+
+.h-20 {
+  height: 5rem;
 }
 
 .h-3\.5 {
@@ -659,6 +705,10 @@ body {
 
 .w-2\.5 {
   width: .625rem;
+}
+
+.w-20 {
+  width: 5rem;
 }
 
 .w-3\.5 {
@@ -1060,8 +1110,16 @@ body {
   border-color: hsl(var(--input));
 }
 
+.border-muted-foreground\/30 {
+  border-color: hsl(var(--muted-foreground) / .3);
+}
+
 .border-primary {
   border-color: hsl(var(--primary));
+}
+
+.border-primary\/20 {
+  border-color: hsl(var(--primary) / .2);
 }
 
 .border-transparent {
@@ -1092,6 +1150,10 @@ body {
   background-color: hsl(var(--background) / .8);
 }
 
+.bg-black\/20 {
+  background-color: #0003;
+}
+
 .bg-black\/80 {
   background-color: #000c;
 }
@@ -1102,6 +1164,10 @@ body {
 
 .bg-card {
   background-color: hsl(var(--card));
+}
+
+.bg-card\/80 {
+  background-color: hsl(var(--card) / .8);
 }
 
 .bg-destructive {
@@ -1152,6 +1218,10 @@ body {
 
 .fill-current {
   fill: currentColor;
+}
+
+.object-cover {
+  object-fit: cover;
 }
 
 .p-0 {
@@ -1261,6 +1331,10 @@ body {
   padding-right: .5rem;
 }
 
+.pr-3 {
+  padding-right: .75rem;
+}
+
 .pr-8 {
   padding-right: 2rem;
 }
@@ -1293,12 +1367,8 @@ body {
   vertical-align: middle;
 }
 
-.font-body {
-  font-family: var(--font-inter), sans-serif;
-}
-
-.font-headline {
-  font-family: var(--font-poppins), sans-serif;
+.font-body, .font-headline {
+  font-family: var(--font-space-grotesk), ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
 }
 
 .font-mono {
@@ -1522,6 +1592,11 @@ body {
   --tw-ring-offset-color: hsl(var(--background));
 }
 
+.invert {
+  --tw-invert: invert(100%);
+  filter: var(--tw-blur) var(--tw-brightness) var(--tw-contrast) var(--tw-grayscale) var(--tw-hue-rotate) var(--tw-invert) var(--tw-saturate) var(--tw-sepia) var(--tw-drop-shadow);
+}
+
 .filter {
   filter: var(--tw-blur) var(--tw-brightness) var(--tw-contrast) var(--tw-grayscale) var(--tw-hue-rotate) var(--tw-invert) var(--tw-saturate) var(--tw-sepia) var(--tw-drop-shadow);
 }
@@ -1607,6 +1682,16 @@ body {
 
 .ease-in-out {
   animation-timing-function: cubic-bezier(.4, 0, .2, 1);
+}
+
+@keyframes rotate-glow {
+  from {
+    transform: translateX(-50%)rotate(0);
+  }
+
+  to {
+    transform: translateX(-50%)rotate(360deg);
+  }
 }
 
 .file\:border-0::file-selector-button {
@@ -1700,6 +1785,10 @@ body {
 
 .hover\:text-foreground:hover {
   color: hsl(var(--foreground));
+}
+
+.hover\:text-primary:hover {
+  color: hsl(var(--primary));
 }
 
 .hover\:text-primary-foreground:hover {

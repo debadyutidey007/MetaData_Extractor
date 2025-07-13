@@ -1,36 +1,31 @@
-import type { Metadata } from "next";
+import { Space_Grotesk } from 'next/font/google';
+import { AuthProvider } from "@/hooks/use-auth";
 import { Toaster } from "@/components/ui/toaster";
-import { Inter, Poppins } from 'next/font/google'
+import { cn } from "@/lib/utils";
 import "./globals.css";
 
-export const metadata: Metadata = {
+const spaceGrotesk = Space_Grotesk({
+  subsets: ['latin'],
+  variable: '--font-space-grotesk',
+});
+
+export const metadata = {
   title: "DataSnatcher",
-  description: "Extract and analyze file metadata with AI-powered PII redaction.",
+  description: "Extract and redact metadata from your files.",
 };
-
-const inter = Inter({
-  subsets: ['latin'],
-  variable: '--font-inter',
-  display: 'swap',
-})
-
-const poppins = Poppins({
-  weight: ['600', '700'],
-  subsets: ['latin'],
-  variable: '--font-poppins',
-  display: 'swap',
-})
 
 export default function RootLayout({
   children,
-}: Readonly<{
+}: {
   children: React.ReactNode;
-}>) {
+}) {
   return (
-    <html lang="en" className={`dark ${inter.variable} ${poppins.variable}`}>
-      <body className="font-body antialiased">
-        {children}
-        <Toaster />
+    <html lang="en" className="dark" style={{ colorScheme: 'dark' }}>
+      <body className={cn("min-h-screen bg-background font-body antialiased", spaceGrotesk.variable)}>
+        <AuthProvider>
+          {children}
+          <Toaster />
+        </AuthProvider>
       </body>
     </html>
   );
