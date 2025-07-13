@@ -8,7 +8,7 @@ export function Header() {
       <div className="flex flex-1 items-center gap-2">
         <Logo className="h-7 w-7 text-primary" />
         <h1 className="text-xl font-bold tracking-tighter text-foreground font-headline">
-          DataSnatcher
+          MetaData Analyzer
         </h1>
       </div>
       <div className="flex items-center gap-2">
