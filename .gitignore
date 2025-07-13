@@ -53,3 +53,4 @@ remoteconfig.tenplate.json
 storage.rules
 dataconnect/
 dataconnect-generated/
+.firebaserc
